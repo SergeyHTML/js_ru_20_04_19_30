@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import CommentList from './CommentsList'
 
 export default class Article extends Component {
 /*
@@ -11,11 +12,12 @@ export default class Article extends Component {
 */
     state = {
         isOpen: false,
-        foo: 'bar'
-    }
+        isShowComments: false,
+        commentsLink: 'Показать помментарии'
+    };
 
     render() {
-        const {article} = this.props
+        const {article} = this.props;
         return (
             <section>
                 <h2 onClick={this.toggleOpen}>
@@ -27,7 +29,18 @@ export default class Article extends Component {
     }
 
     getBody() {
-        return this.state.isOpen && <div>{this.props.article.text}</div>
+        return this.state.isOpen && <div> {this.props.article.text} <div><h4 onClick={this.toggleComments}>{this.state.commentsLink}</h4>  {this.commentsList()}</div> </div>
+    }
+
+    commentsList(){
+        return this.state.isShowComments && <div><CommentList comments={this.props.article.comments} /></div>
+    }
+
+    toggleComments = ev => {
+      this.setState({
+        isShowComments: !this.state.isShowComments,
+        commentsLink: !this.state.isShowComments ? 'Скрыть комментарии' : 'Показать помментарии'
+      })
     }
 
     toggleOpen = ev => {
@@ -37,17 +50,3 @@ export default class Article extends Component {
     }
 }
 
-/*
-export default function Article(props) {
-    const {article} = props
-    return (
-        <section>
-            <h2>
-                {article.title}
-            </h2>
-            <div>
-                {article.text}
-            </div>
-        </section>
-    )
-}*/
