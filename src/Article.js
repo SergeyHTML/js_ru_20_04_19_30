@@ -12,7 +12,9 @@ export default class Article extends Component {
 */
     state = {
         isOpen: false,
+        //лучше внести этот стейт в CommentList, иначе компонент выходит очень прегруженным
         isShowComments: false,
+        //а это не нужно в стейте, можеш посчитать из прошлой переменной
         commentsLink: 'Показать помментарии'
     };
 
