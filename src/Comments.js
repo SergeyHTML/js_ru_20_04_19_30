@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 
+//Это можно сделать Functional Component, по возможности используй их
 export default class Comments extends Component {
   render() {
     const {comment} = this.props;
