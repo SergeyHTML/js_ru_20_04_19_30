@@ -4,6 +4,7 @@ import Chart from './Chart'
 import UserForm from './UserForm'
 import Select from 'react-select'
 import 'react-select/dist/react-select.css'
+import DayPicker from './DayPicker'
 
 class App extends Component {
     static propTypes = {
@@ -30,6 +31,7 @@ class App extends Component {
 
         return (
             <div>
+                <DayPicker/>
                 <UserForm />
                 <a href = "#" onClick = {this.updateCounter}>update chart</a>
                 <Select options = {options} value = {this.state.selection}
