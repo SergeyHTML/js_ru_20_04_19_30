@@ -8,6 +8,7 @@ class AddNewComment extends Component {
     }
 
     render() {
+        //подсветку не сделал?
         return (
             <div>
                 <p>
