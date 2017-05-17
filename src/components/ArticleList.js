@@ -42,5 +42,7 @@ ArticleList.propTypes = {
 }
 
 export default connect((state) => ({
-   articles: state.articles
+    articles: state.articles,
+    selected: state.filters.selection
+
 }))(accordion(ArticleList))

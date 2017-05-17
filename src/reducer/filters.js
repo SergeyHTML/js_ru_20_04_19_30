@@ -1,7 +1,7 @@
 import {SELECT_DAYS, CHANGE_SELECTION} from '../constants'
 
 const defFilters = {
-    selection: [],
+    selection: null,
     dateRange: {
         from: null,
         to: null
@@ -15,7 +15,6 @@ export default (filters = defFilters, action) => {
             return {...filters, dateRange: payload.dateRange}
 
         case CHANGE_SELECTION:
-            console.log(2);
             return {...filters, selection: payload.selection}
     }
     return filters

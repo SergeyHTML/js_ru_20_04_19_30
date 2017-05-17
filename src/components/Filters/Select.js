@@ -12,12 +12,10 @@ class SelectFilter extends Component {
 
     render() {
         const {articles, selection} = this.props
-        console.log(selection);
         const options = articles.map(article => ({
             label: article.title,
             value: article.id
         }))
-        console.log(options);
 
         return (
             <Select options = {options} value = {selection}
@@ -28,7 +26,6 @@ class SelectFilter extends Component {
     }
 
     handleSelectionChange = (selection) => {
-        console.log(selection);
         const {changeSelection} = this.props
         changeSelection(selection.map(option => option.value))
     }
@@ -36,5 +33,5 @@ class SelectFilter extends Component {
 
 export default connect((state) => ({
     articles: state.articles,
-    selection: state.selection
+    selection: state.filters.selection
 }), {changeSelection})(SelectFilter)
