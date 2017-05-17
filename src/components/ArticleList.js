@@ -7,8 +7,8 @@ import {connect} from 'react-redux'
 
 class ArticleList extends Component {
     componentDidMount() {
-        const ref = this.refs[this.props.articles[0].id]
-        console.log('---', ref, findDOMNode(ref))
+        // const ref = this.refs[this.props.articles[0].id]
+        // console.log('---', ref, findDOMNode(ref))
     }
 
 
@@ -42,7 +42,5 @@ ArticleList.propTypes = {
 }
 
 export default connect((state) => ({
-    articles: state.articles,
-    selected: state.filters.selection
-
+    articles: state.articles
 }))(accordion(ArticleList))
