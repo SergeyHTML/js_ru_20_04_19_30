@@ -8,8 +8,8 @@ import {filteredArticlesSelector} from '../selectors'
 
 class ArticleList extends Component {
     componentDidMount() {
-        const ref = this.refs[this.props.articles[0].id]
-        console.log('---', ref, findDOMNode(ref))
+        // const ref = this.refs[this.props.articles[0].id]
+        // console.log('---', ref, findDOMNode(ref))
     }
 
 
@@ -17,11 +17,11 @@ class ArticleList extends Component {
         const {articles, toggleOpenItem, isItemOpened} = this.props
         console.log('---', 'rerendering ArticleList')
 
-        const elements = articles.map(article => <li key={article.id}>
-            <Article article = {article}
-                     isOpen = {isItemOpened(article.id)}
-                     toggleOpen = {toggleOpenItem(article.id)}
-                     ref = {article.id}
+        const elements = articles.map(id => <li key={id}>
+            <Article id = {id}
+                     isOpen = {isItemOpened(id)}
+                     toggleOpen = {toggleOpenItem(id)}
+                     ref = {id}
             />
         </li>)
         return (

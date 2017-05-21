@@ -8,10 +8,9 @@ export const idGetter = (state, props) => props.id
 export const filteredArticlesSelector = createSelector(articlesGetter, filtersGetter, (articles, filters) => {
     console.log('---', 'recalculate articles')
     const {selected, dateRange: {from, to}} = filters
-
-    return articles.filter(article => {
-        const published = Date.parse(article.date)
-        return (!selected.length || selected.includes(article.id)) &&
+    return Object.keys(articles).filter(id => {
+        const published = Date.parse(articles[id].date)
+        return (!selected.length || selected.includes(articles[id].id)) &&
             (!from || !to || (published > from && published < to))
     })
 })

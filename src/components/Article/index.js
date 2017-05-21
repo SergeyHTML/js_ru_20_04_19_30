@@ -23,16 +23,17 @@ class Article extends Component {
         console.log('---', 'mounting')
     }
 */
-    shouldComponentUpdate(nextProps, nextState) {
-        return nextProps.isOpen != this.props.isOpen
-    }
+    // shouldComponentUpdate(nextProps, nextState) {
+    //     return nextProps.isOpen != this.props.isOpen
+    // }
 
     componentWillUpdate() {
         console.log('---', 'updating')
     }
 
     render() {
-        const {article, toggleOpen} = this.props
+        const {articles, id, toggleOpen} = this.props
+        const article = articles[id];
         return (
             <section>
                 <h2 onClick={toggleOpen}>
@@ -52,18 +53,23 @@ class Article extends Component {
 
     handleDelete = ev => {
         ev.preventDefault()
-        const { deleteArticle, article } = this.props
+        const { deleteArticle, articles, id } = this.props
+        const article = articles[id];
         deleteArticle(article.id)
     }
 
     getBody() {
+        const {articles, id} = this.props
+        const article = articles[id]
         return this.props.isOpen && (
             <div>
-                {this.props.article.text}
-                <CommnetList comments={this.props.article.comments}/>
+                {article.text}
+                <CommnetList articleId = {article.id} comments={article.comments}/>
             </div>
         )
     }
 }
 
-export default connect(null, { deleteArticle })(Article)
+export default connect((state) =>({
+    articles: state.articles
+}), { deleteArticle })(Article)
