@@ -9,6 +9,7 @@ export default (comments = commentMap, action) => {
     const {type, payload, randomId} = action
     switch (type) {
         case ADD_COMMENT:
+            //не мутируй стейт
             comments[randomId] = {
                 id: randomId,
                 user: payload.comment.user,
