@@ -54,6 +54,7 @@ export default (articles = new DefaultReducerState(), action) => {
         case LOAD_ALL_COMMENTS + FAIL:
             return articles
                 .setIn(['entities', payload.id, 'commentErrorText'], payload.error.statusText)
+            //почему commentLoaded === true при фейле?
                 .setIn(['entities', payload.id, 'commentLoaded'], true)
                 .setIn(['entities', payload.id, 'commentLoading'], true)
 
