@@ -16,7 +16,7 @@ class ArticlesPage extends Component {
         this.checkLoaded(nextProps)
     }
 
-    checkLoaded({ loading, comments, match, loadAllListComments }) {
+    checkLoaded({comments, match, loadAllListComments }) {
         if (!comments) loadAllListComments(match.params.page)
     }
 
