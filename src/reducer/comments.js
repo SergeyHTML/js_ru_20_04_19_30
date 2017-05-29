@@ -10,6 +10,7 @@ const CommentModel = Record({
 
 const DefaultReducerState = Record({
     entities: new OrderedMap({}),
+    //не обязательно OrderedMap
     pages: new OrderedMap({}),
     totalPage: null
 })
@@ -30,6 +31,7 @@ export default (comments = new DefaultReducerState(), action) => {
             return comments
                 .setIn(['totalPage'], response.total)
                 .mergeIn(['entities'], arrayToMap(response.records, CommentModel))
+                //ids
                 .setIn(['pages', payload.page, 'id'], response.records.map((comment) => comment.id))
 
     }
