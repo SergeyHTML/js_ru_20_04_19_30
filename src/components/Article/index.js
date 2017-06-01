@@ -11,7 +11,7 @@ class Article extends Component {
     static propTypes = {
         id: PropTypes.string.isRequired,
         article: PropTypes.shape({
-            title: PropTypes.string.isRequired,
+            title: PropTypes.string,
             text: PropTypes.string,
             comments: PropTypes.array
         }),
@@ -28,9 +28,9 @@ class Article extends Component {
         this.checkAndLoad(this.props)
     }
 
-    componentWillReceiveProps(nextProps) {
-        this.checkAndLoad(nextProps)
-    }
+    // componentWillReceiveProps(nextProps) {
+        // this.checkAndLoad(nextProps)
+    // }
 
     checkAndLoad({article, id, loadArticle}) {
         if (!article || (!article.text && !article.loading)) loadArticle(id)

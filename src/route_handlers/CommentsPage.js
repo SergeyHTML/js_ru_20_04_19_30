@@ -5,7 +5,7 @@ import {Redirect, Route} from 'react-router-dom'
 
 function CommentsPage({match}) {
     if (match.isExact) return <Redirect to='/comments/1'/>
-    return <Route path = '/comments/:id' render = {getCommentsPage}/>
+    return <Route path = '/comments/:page' render = {getCommentsPage}/>
 }
 
 function getCommentsPage({match}) {
